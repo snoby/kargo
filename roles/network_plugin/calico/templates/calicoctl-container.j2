@@ -1,4 +1,5 @@
 #!/bin/bash
+{% if kube_container_engine == "docker" %}
 /usr/bin/docker run --privileged --rm \
 --net=host --pid=host -e ETCD_AUTHORITY={{ etcd_authority }} \
 -v /usr/bin/docker:/usr/bin/docker \
@@ -6,3 +7,6 @@
 -v /var/run/calico:/var/run/calico \
 {{ calicoctl_image_repo }}:{{ calicoctl_image_tag}} \
 $@
+{% elif kube_container_engine == "rkt" %}
+@TODO-RKT
+{% endif %}
