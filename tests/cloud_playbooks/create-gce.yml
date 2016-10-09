@@ -3,7 +3,7 @@
   sudo: False
   gather_facts: no
   vars:
-    cloud_machine_type: g1-small
+    cloud_machine_type: n1-standard-2
 
   tasks:
     - name: replace_test_id

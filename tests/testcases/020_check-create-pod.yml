@@ -9,5 +9,5 @@
     shell: "/usr/local/bin/kubectl get pods --no-headers -o json"
     register: run_pods_log
     until: [ '(run_pods_log.stdout | from_json)["items"] | map(attribute = "status.phase") | join(",") == "Running,Running"' ]
-    retries: 24
+    retries: 36
     delay: 5
